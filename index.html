@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>나의 예술가 유형 검사기</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <header class="top">
+      <h1>나의 예술가 유형 검사기</h1>
+      <div id="progress" class="progress">1 / 10</div>
+    </header>
+
+    <section class="qbox">
+      <div id="question" class="question"></div>
+      <div class="choices">
+        <button class="btn" data-choice="yes">그렇다</button>
+        <button class="btn" data-choice="mid">중간이다</button>
+        <button class="btn" data-choice="no">아니다</button>
+      </div>
+    </section>
+
+    <section id="result" class="result hidden"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
