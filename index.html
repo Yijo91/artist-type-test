@@ -84,4 +84,202 @@
       a:[ {t:"그렇다", s:{matisse:3,miro:2}}, {t:"중간", s:{matisse:2,klee:1}}, {t:"아니다", s:{klee:2,picasso:2}} ] },
     { q:"같은 주제라도 ‘다른 버전’을 여러 개 만들고 싶어하나요?",
       a:[ {t:"그렇다", s:{picasso:3,klee:2}}, {t:"중간", s:{picasso:2,miro:1}}, {t:"아니다", s:{matisse:2,miro:2}} ] },
-    {
+    { q:"규칙/방법을 알려주면 더 편안해하나요?",
+      a:[ {t:"그렇다", s:{klee:3,picasso:2}}, {t:"중간", s:{klee:2,matisse:1}}, {t:"아니다", s:{miro:3,matisse:2}} ] },
+    { q:"그림 속에 기호(표시, 문자, 반복되는 모양)를 자주 넣나요?",
+      a:[ {t:"그렇다", s:{klee:3,miro:2}}, {t:"중간", s:{klee:2,picasso:1}}, {t:"아니다", s:{matisse:2,picasso:2}} ] },
+    { q:"선(윤곽, 형태)을 먼저 잡아야 안심하는 편인가요?",
+      a:[ {t:"그렇다", s:{klee:3,picasso:2}}, {t:"중간", s:{picasso:2,matisse:1}}, {t:"아니다", s:{matisse:3,miro:2}} ] }
+  ];
+
+  var quizDiv = document.getElementById("quiz");
+  var resultDiv = document.getElementById("result");
+  var debugBox = document.getElementById("debug");
+
+  var current = 0;
+  var scores = {klee:0, miro:0, picasso:0, matisse:0};
+  var answers = [];
+
+  function esc(x){ return String(x).replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  function showError(err){
+    quizDiv.innerHTML =
+      '<div class="err">문항을 표시하는 중 오류가 발생했습니다.</div>' +
+      '<div class="small" style="margin-top:8px;">' + esc(err) + '</div>' +
+      '<div class="small" style="margin-top:12px;">콘솔(Console) 탭의 빨간 에러를 그대로 복사해주시면 제가 즉시 끝내드리겠습니다.</div>';
+  }
+
+  function applyScore(delta, dir){
+    dir = dir || 1;
+    for (var k in scores) scores[k] += (delta[k] || 0) * dir;
+  }
+
+  function renderQuestion(){
+    var total = questions.length;
+    if (current >= total) return showResult();
+
+    var q = questions[current];
+    quizDiv.innerHTML = '';
+    quizDiv.insertAdjacentHTML("beforeend",
+      '<div class="progress">'+(current+1)+' / '+total+'</div>' +
+      '<div class="q">'+esc(q.q)+'</div>'
+    );
+
+    for (var i=0;i<q.a.length;i++){
+      (function(i){
+        var btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = q.a[i].t;
+        btn.addEventListener("click", function(){ answer(i); });
+        quizDiv.appendChild(btn);
+      })(i);
+    }
+
+    var row = document.createElement("div");
+    row.className = "row";
+
+    var resetBtn = document.createElement("button");
+    resetBtn.className = "btn ghost";
+    resetBtn.textContent = "처음으로";
+    resetBtn.addEventListener("click", resetQuiz);
+
+    var backBtn = document.createElement("button");
+    backBtn.className = "btn ghost";
+    backBtn.textContent = "이전";
+    backBtn.disabled = (current===0);
+    backBtn.addEventListener("click", backOne);
+
+    row.appendChild(resetBtn);
+    row.appendChild(backBtn);
+    quizDiv.appendChild(row);
+
+    var note = document.createElement("div");
+    note.className = "small";
+    note.style.marginTop = "10px";
+    note.textContent = "※ 부모님 관찰 기준으로 가장 가까운 선택을 고르시면 됩니다.";
+    quizDiv.appendChild(note);
+
+    if (DEBUG) showDebug(false);
+  }
+
+  function answer(i){
+    var chosen = questions[current].a[i];
+    answers[current] = i;
+    applyScore(chosen.s, +1);
+    current++;
+    renderQuestion();
+  }
+
+  function backOne(){
+    if (current===0) return;
+    current--;
+    var prevIdx = answers[current];
+    if (prevIdx !== undefined){
+      var prev = questions[current].a[prevIdx];
+      applyScore(prev.s, -1);
+      answers[current] = undefined;
+    }
+    renderQuestion();
+  }
+
+  function breakTies(keys){
+    var priority = ["klee","picasso","matisse","miro"];
+    for (var i=0;i<priority.length;i++) if (keys.indexOf(priority[i])>=0) return priority[i];
+    return keys[0];
+  }
+
+  /* ✅ 결과 이미지 표시 로직 */
+  function setResultImage(resultName){
+    // 파일명 공백/한글이 섞여도 URL 인코딩으로 안전하게 로드
+    var imgPath = artistImages[resultName];
+    var imgEl = document.getElementById("result-image");
+    if (!imgEl) return;
+
+    if (imgPath) {
+      imgEl.src = encodeURI(imgPath);
+      imgEl.style.display = "block";
+    } else {
+      imgEl.style.display = "none";
+      imgEl.removeAttribute("src");
+    }
+  }
+
+  function showResult(){
+    quizDiv.style.display = "none";
+
+    var maxScore = Math.max(scores.klee, scores.miro, scores.picasso, scores.matisse);
+    var topKeys = [];
+    for (var k in scores) if (scores[k]===maxScore) topKeys.push(k);
+    var top = (topKeys.length===1) ? topKeys[0] : breakTies(topKeys);
+
+    var r = artists[top];
+
+    resultDiv.innerHTML =
+      '<div class="pill">결과</div>' +
+      '<h2 class="result-title">'+esc(r.name)+'</h2>' +
+
+      /* ✅ 여기: 결과 제목 바로 아래에 이미지 자리 */
+      '<div class="result-img-wrap">' +
+        '<img id="result-image" class="result-img" src="" alt="결과 이미지">' +
+      '</div>' +
+
+      '<p style="margin:8px 0 0; line-height:1.6;">'+esc(r.desc)+'</p>' +
+      '<p class="small" style="margin:10px 0 0;">'+esc(r.rare)+'</p>' +
+      '<div class="hr"></div>' +
+      '<div class="small"><b>이 아이에게 잘 맞는 자극</b><br>'+esc(r.tip)+'</div>' +
+      '<div class="hr"></div>' +
+      '<div class="small">이 성향은 나이가 들수록 사라지거나, 환경에 따라 전혀 다른 방향으로 발전할 수 있습니다.<br><b>지금의 경험이 방향을 만듭니다.</b></div>' +
+      '<div class="row"><button id="again" class="btn">다시 하기</button><button id="copy" class="btn">결과 복사</button></div>';
+
+    resultDiv.style.display = "block";
+
+    // ✅ 결과 이미지 실제 적용
+    setResultImage(r.name);
+
+    document.getElementById("again").addEventListener("click", resetQuiz);
+    document.getElementById("copy").addEventListener("click", copyResult);
+
+    if (DEBUG) showDebug(true);
+  }
+
+  function copyResult(){
+    var maxScore = Math.max(scores.klee, scores.miro, scores.picasso, scores.matisse);
+    var topKeys = [];
+    for (var k in scores) if (scores[k]===maxScore) topKeys.push(k);
+    var top = (topKeys.length===1) ? topKeys[0] : breakTies(topKeys);
+    var r = artists[top];
+
+    var text = r.name + "\n" + r.desc + "\n" + r.rare + "\n(한 줄) 지금의 경험이 방향을 만듭니다.";
+
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ alert("결과 문구를 복사했습니다."); });
+    } else {
+      prompt("아래 내용을 복사하십시오.", text);
+    }
+  }
+
+  function showDebug(isResult){
+    debugBox.style.display = "block";
+    var rows = "";
+    for (var k in scores) rows += (k + " : " + scores[k] + "\n");
+    debugBox.textContent = (isResult ? "[DEBUG: RESULT]\n" : "[DEBUG]\n") + rows + "\n답변기록: " + JSON.stringify(answers);
+  }
+
+  function resetQuiz(){
+    current = 0;
+    scores = {klee:0, miro:0, picasso:0, matisse:0};
+    answers = [];
+    quizDiv.style.display = "block";
+    resultDiv.style.display = "none";
+    renderQuestion();
+  }
+
+  try {
+    renderQuestion();
+  } catch (e) {
+    showError(e);
+  }
+})();
+</script>
+</body>
+</html>
