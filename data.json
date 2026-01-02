@@ -1,89 +1,93 @@
 {
   "questions": [
     {
-      "text": "나는 노을을 볼 때 색보다 구조가 먼저 보인다.",
-      "yes": { "cubism":4, "construct":3, "impression":1, "surreal":2 },
-      "mid": { "cubism":2, "construct":2, "impression":2, "surreal":2 },
-      "no":  { "cubism":1, "construct":1, "impression":4, "surreal":3 }
+      "text": "아이는 그림을 그리기 전, 한참을 바라보는 편인가요?",
+      "yes": { "klee":3, "picasso":2, "matisse":0, "miro":0 },
+      "mid": { "klee":1, "matisse":1, "picasso":1, "miro":1 },
+      "no":  { "miro":3, "matisse":2, "klee":0, "picasso":0 }
     },
     {
-      "text": "그림은 설명 없이도 전달되어야 한다고 생각한다.",
-      "yes": { "impression":4, "surreal":3, "cubism":1, "construct":1 },
-      "mid": { "impression":2, "surreal":2, "cubism":2, "construct":2 },
-      "no":  { "construct":4, "cubism":3, "surreal":1, "impression":1 }
+      "text": "완성보다 과정(그리고 있는 중)에 더 몰입하나요?",
+      "yes": { "miro":3, "matisse":2, "klee":0, "picasso":0 },
+      "mid": { "miro":1, "picasso":2, "klee":0, "matisse":0 },
+      "no":  { "klee":3, "picasso":1, "miro":0, "matisse":0 }
     },
     {
-      "text": "나는 작품을 만들 때 우연을 환영한다.",
-      "yes": { "surreal":4, "impression":3, "cubism":2, "construct":1 },
-      "mid": { "surreal":2, "impression":2, "cubism":2, "construct":2 },
-      "no":  { "construct":4, "cubism":3, "impression":1, "surreal":1 }
+      "text": "그림을 설명해 달라 하면 말보다 ‘보여주기’가 많은가요?",
+      "yes": { "miro":3, "matisse":2, "klee":0, "picasso":0 },
+      "mid": { "miro":1, "picasso":1, "matisse":1, "klee":0 },
+      "no":  { "klee":3, "picasso":2, "miro":0, "matisse":0 }
     },
     {
-      "text": "하나의 대상을 여러 각도에서 보는 것이 흥미롭다.",
-      "yes": { "cubism":4, "construct":3, "surreal":2, "impression":1 },
-      "mid": { "cubism":2, "construct":2, "surreal":2, "impression":2 },
-      "no":  { "impression":4, "surreal":3, "construct":1, "cubism":1 }
+      "text": "한 장을 그릴 때, 자주 지우고 다시 그리나요?",
+      "yes": { "klee":3, "picasso":2, "miro":0, "matisse":0 },
+      "mid": { "klee":1, "picasso":1, "matisse":1, "miro":0 },
+      "no":  { "miro":2, "matisse":3, "klee":0, "picasso":0 }
     },
     {
-      "text": "감정은 정리되지 않아도 가치가 있다.",
-      "yes": { "impression":4, "surreal":3, "cubism":1, "construct":1 },
-      "mid": { "impression":2, "surreal":2, "cubism":2, "construct":2 },
-      "no":  { "construct":4, "cubism":3, "impression":1, "surreal":1 }
+      "text": "사물을 ‘있는 그대로’보다 ‘다르게’ 그리려는 편인가요?",
+      "yes": { "picasso":3, "miro":2, "klee":0, "matisse":0 },
+      "mid": { "picasso":2, "matisse":1, "klee":0, "miro":0 },
+      "no":  { "klee":2, "matisse":2, "picasso":0, "miro":0 }
     },
     {
-      "text": "나는 규칙을 만든 뒤 깨는 편이다.",
-      "yes": { "cubism":3, "surreal":4, "construct":2, "impression":1 },
-      "mid": { "cubism":2, "surreal":2, "construct":2, "impression":2 },
-      "no":  { "construct":4, "impression":3, "cubism":1, "surreal":1 }
+      "text": "색을 고를 때 이유가 ‘느낌’에 가까운가요?",
+      "yes": { "matisse":3, "miro":2, "klee":0, "picasso":0 },
+      "mid": { "matisse":2, "klee":1, "miro":0, "picasso":0 },
+      "no":  { "klee":2, "picasso":2, "matisse":0, "miro":0 }
     },
     {
-      "text": "작품은 현실과 닮지 않아도 된다고 생각한다.",
-      "yes": { "surreal":4, "construct":3, "cubism":2, "impression":1 },
-      "mid": { "surreal":2, "construct":2, "cubism":2, "impression":2 },
-      "no":  { "impression":4, "cubism":3, "construct":1, "surreal":1 }
+      "text": "같은 주제라도 ‘다른 버전’을 여러 개 만들고 싶어하나요?",
+      "yes": { "picasso":3, "klee":2, "matisse":0, "miro":0 },
+      "mid": { "picasso":2, "miro":1, "klee":0, "matisse":0 },
+      "no":  { "matisse":2, "miro":2, "klee":0, "picasso":0 }
     },
     {
-      "text": "나는 감각보다 개념에 더 흥미를 느낀다.",
-      "yes": { "cubism":4, "construct":3, "surreal":2, "impression":1 },
-      "mid": { "cubism":2, "construct":2, "surreal":2, "impression":2 },
-      "no":  { "impression":4, "surreal":3, "cubism":1, "construct":1 }
+      "text": "규칙/방법을 알려주면 더 편안해하나요?",
+      "yes": { "klee":3, "picasso":2, "miro":0, "matisse":0 },
+      "mid": { "klee":2, "matisse":1, "miro":0, "picasso":0 },
+      "no":  { "miro":3, "matisse":2, "klee":0, "picasso":0 }
     },
     {
-      "text": "즉흥적인 낙서가 완성작보다 좋을 때가 있다.",
-      "yes": { "impression":4, "surreal":3, "cubism":2, "construct":1 },
-      "mid": { "impression":2, "surreal":2, "cubism":2, "construct":2 },
-      "no":  { "construct":4, "cubism":3, "impression":1, "surreal":1 }
+      "text": "그림 속에 기호(표시, 문자, 반복되는 모양)를 자주 넣나요?",
+      "yes": { "klee":3, "miro":2, "matisse":0, "picasso":0 },
+      "mid": { "klee":2, "picasso":1, "miro":0, "matisse":0 },
+      "no":  { "matisse":2, "picasso":2, "klee":0, "miro":0 }
     },
     {
-      "text": "나는 ‘왜 이렇게 만들었는지’ 설명하는 걸 싫어한다.",
-      "yes": { "impression":4, "surreal":3, "cubism":1, "construct":1 },
-      "mid": { "impression":2, "surreal":2, "cubism":2, "construct":2 },
-      "no":  { "construct":4, "cubism":3, "surreal":1, "impression":1 }
+      "text": "선(윤곽, 형태)을 먼저 잡아야 안심하는 편인가요?",
+      "yes": { "klee":3, "picasso":2, "miro":0, "matisse":0 },
+      "mid": { "picasso":2, "matisse":1, "klee":0, "miro":0 },
+      "no":  { "matisse":3, "miro":2, "klee":0, "picasso":0 }
     }
   ],
   "results": {
-    "cubism": {
-      "title": "입체파 (Picasso 계열)",
-      "desc": "감정보다 구조를 먼저 만지십니다. 대상을 분해하고 재조합해 ‘다른 진실’을 만들어내는 타입입니다.",
-      "tip": "팁: 한 대상을 3개의 각도로 쪼개 스케치한 뒤, 한 화면에 합쳐보십시오.",
-      "image": "assets/파블로피카소.jpeg"
-    },
-    "impression": {
-      "title": "인상파 (Van Gogh 계열)",
-      "desc": "순간의 공기와 감정 밀도를 색으로 기억하십니다. ‘설명’보다 ‘체감’이 우선인 타입입니다.",
-      "tip": "팁: 같은 장면을 10분 간격으로 3장 그려 색의 변화만 잡아보십시오.",
+    "klee": {
+      "title": "파울 클레형",
+      "desc": "생각을 정리한 뒤 기호와 구조로 표현하는 아이입니다.",
+      "rare": "이 성향은 7–9세에서 비교적 드뭅니다.",
+      "tip": "‘정답’보다 ‘구조’에 관심이 큽니다. 과정 설명을 허용하면 표현이 확 열립니다.",
       "image": "assets/파울클레.png"
     },
-    "surreal": {
-      "title": "초현실주의 (Dalí 계열)",
-      "desc": "논리 밖에서 더 정확한 감각을 찾으십니다. 상징과 꿈, 이상함을 ‘재료’로 쓰는 타입입니다.",
-      "tip": "팁: 꿈에서 본 물체 3개를 적고, 그 3개를 한 생물로 합성해보십시오.",
+    "miro": {
+      "title": "호안 미로형",
+      "desc": "자유로운 상징과 색으로 먼저 말하는 아이입니다.",
+      "rare": "이 성향은 이 시기에 유지되기 드문 편입니다.",
+      "tip": "설명 강요보다 ‘그림이 말하게’ 두면 좋습니다. 억압하면 급격히 작아질 수 있습니다.",
       "image": "assets/호안미로.png"
     },
-    "construct": {
-      "title": "추상·구성주의 (Mondrian 계열)",
-      "desc": "아름다움을 ‘정리’하고 ‘통제’해내는 타입입니다. 규칙을 만들수록 더 자유로워지십니다.",
-      "tip": "팁: 제한을 걸어보십시오(색 2개, 선 6개). 그 안에서만 완성해보시면 됩니다.",
+    "picasso": {
+      "title": "피카소형",
+      "desc": "사물을 해체하고 다시 구성하려는 사고를 가진 아이입니다.",
+      "rare": "이 시기에 나타나면 사고 전환이 빠른 편입니다.",
+      "tip": "‘다른 시점’ 제시가 효과적입니다. 변형 과제가 잘 맞습니다.",
+      "image": "assets/파블로피카소.jpeg"
+    },
+    "matisse": {
+      "title": "마티스형",
+      "desc": "정확함보다 느낌과 색을 먼저 잡는 아이입니다.",
+      "rare": "초등 초반에 점차 줄어드는 성향입니다.",
+      "tip": "색 선택을 존중하면 자신감이 자랍니다. 정교함은 나중에 따라오게 해도 됩니다.",
       "image": "assets/앙리마티스.png"
     }
   }
