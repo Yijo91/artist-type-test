@@ -1,166 +1,203 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>우리 아이의 예술 성향 검사</title>
 <style>
-body {
-  font-family: "Apple SD Gothic Neo", sans-serif;
-  background:#f5f3ef;
-  padding:40px;
-}
-h1 { font-size:24px; }
-.question { margin-bottom:30px; }
-button {
-  display:block;
-  margin:8px 0;
-  padding:10px;
-  width:100%;
-  border:none;
-  background:#ddd;
-  cursor:pointer;
-}
-button:hover { background:#bbb; }
-#result {
-  display:none;
-  background:#fff;
-  padding:30px;
-  margin-top:40px;
-}
-.small {
-  color:#666;
-  font-size:14px;
-}
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; background:#f5f3ef; padding:28px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 10px; }
+  .small { color:#666; font-size: 13px; line-height: 1.5; }
+  .card { background:#fff; border-radius:14px; padding:18px; box-shadow: 0 6px 18px rgba(0,0,0,.06); margin-top:14px; }
+  .progress { margin-top: 12px; font-size: 12px; color:#666; }
+  .q { font-size: 18px; margin: 0 0 12px; line-height: 1.4; }
+  .btn { width:100%; padding:12px 12px; border:0; border-radius:10px; background:#e7e3db; cursor:pointer; font-size: 15px; margin:8px 0; }
+  .btn:hover { background:#d9d4cb; }
+  .row { display:flex; gap:10px; margin-top: 12px; }
+  .ghost { background:#efece6; }
+  .ghost:hover { background:#e5e1da; }
+  .result-title { font-size: 20px; margin: 0 0 6px; }
+  .hr { height:1px; background:#eee; margin: 14px 0; }
+  .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#f3f0ea; font-size: 12px; color:#555; }
+  .debug { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background:#111; color:#ddd; padding:12px; border-radius:10px; overflow:auto; display:none; }
 </style>
 </head>
 
 <body>
+<div class="wrap">
+  <h1>아이의 그림 성향을 알아보세요</h1>
+  <div class="small">10문항 / 부모 관찰형. 결과는 “화가 유형”으로 나옵니다.</div>
 
-<h1>아이의 그림 성향을 알아보세요</h1>
-
-<div id="quiz"></div>
-
-<div id="result"></div>
+  <div id="quiz" class="card"></div>
+  <div id="result" class="card" style="display:none;"></div>
+  <pre id="debug" class="debug"></pre>
+</div>
 
 <script>
-// ----------------------
-// 화가 타입 정의
-// ----------------------
+/* =========================
+   0) 설정: URL 옵션
+   - ?debug=1 : 점수표 표시
+   - ?seed=KLEE  : 자동 테스트(전부 한 유형에 유리하게)
+   ========================= */
+const params = new URLSearchParams(location.search);
+const DEBUG = params.get("debug") === "1";
+const SEED  = (params.get("seed") || "").toUpperCase(); // KLEE/MIRO/PICASSO/MATISSE
+
+/* =========================
+   1) 화가 타입 정의
+   ========================= */
 const artists = {
   klee: {
     name: "파울 클레형",
     desc: "생각을 정리한 뒤 기호와 구조로 표현하는 아이",
-    rare: "이 성향은 7–9세에서 비교적 드뭅니다."
+    rare: "이 성향은 7–9세에서 비교적 드뭅니다.",
+    tip: "‘정답’보다 ‘구조’에 관심이 큽니다. 과정 설명을 허용하면 표현이 확 열립니다."
   },
   miro: {
     name: "호안 미로형",
     desc: "자유로운 상징과 색으로 먼저 말하는 아이",
-    rare: "이 성향은 이 시기에 유지되기 드문 편입니다."
+    rare: "이 성향은 이 시기에 유지되기 드문 편입니다.",
+    tip: "설명 강요보다 ‘그림이 말하게’ 두면 좋습니다. 억압하면 급격히 작아질 수 있습니다."
   },
   picasso: {
     name: "피카소형",
     desc: "사물을 해체하고 다시 구성하려는 사고를 가진 아이",
-    rare: "이 시기에 나타나면 사고 전환이 빠른 편입니다."
+    rare: "이 시기에 나타나면 사고 전환이 빠른 편입니다.",
+    tip: "한 번에 정답을 찾기보다 ‘다른 시점’ 제시가 효과적입니다. 변형 과제가 잘 맞습니다."
   },
   matisse: {
     name: "마티스형",
     desc: "정확함보다 느낌과 색을 먼저 잡는 아이",
-    rare: "초등 초반에 점차 줄어드는 성향입니다."
+    rare: "초등 초반에 점차 줄어드는 성향입니다.",
+    tip: "색 선택을 존중하면 자신감이 자랍니다. 정교함은 나중에 따라오게 해도 됩니다."
   }
 };
 
-// ----------------------
-// 질문 데이터
-// ----------------------
+/* =========================
+   2) 질문 10개
+   - 각 질문: 그렇다/중간/아니다
+   - 점수는 4유형에 분배
+   ========================= */
 const questions = [
   {
     q: "아이는 그림을 그리기 전, 한참을 바라보는 편인가요?",
     a: [
-      { text: "그렇다", score:{klee:3, picasso:2} },
-      { text: "중간", score:{matisse:2} },
-      { text: "아니다", score:{miro:3} }
+      { text:"그렇다", score:{klee:3, picasso:2} },
+      { text:"중간",   score:{klee:1, matisse:1, picasso:1, miro:1} },
+      { text:"아니다", score:{miro:3, matisse:2} }
     ]
   },
   {
-    q: "완성보다 과정에 더 몰입하나요?",
+    q: "완성보다 과정(그리고 있는 중)에 더 몰입하나요?",
     a: [
-      { text: "그렇다", score:{miro:3, matisse:2} },
-      { text: "중간", score:{picasso:2} },
-      { text: "아니다", score:{klee:3} }
+      { text:"그렇다", score:{miro:3, matisse:2} },
+      { text:"중간",   score:{miro:1, picasso:2} },
+      { text:"아니다", score:{klee:3, picasso:1} }
     ]
   },
   {
-    q: "그림을 설명해 달라 하면 말보다 손짓이 많은가요?",
+    q: "그림을 설명해 달라 하면 말보다 ‘보여주기’가 많은가요?",
     a: [
-      { text: "그렇다", score:{miro:3} },
-      { text: "중간", score:{matisse:2} },
-      { text: "아니다", score:{klee:3, picasso:2} }
+      { text:"그렇다", score:{miro:3, matisse:2} },
+      { text:"중간",   score:{miro:1, picasso:1, matisse:1} },
+      { text:"아니다", score:{klee:3, picasso:2} }
     ]
-  }
-  // 필요하면 여기서 질문 계속 추가
+  },
+  {
+    q: "한 장을 그릴 때, 자주 지우고 다시 그리나요?",
+    a: [
+      { text:"그렇다", score:{klee:3, picasso:2} },
+      { text:"중간",   score:{klee:1, picasso:1, matisse:1} },
+      { text:"아니다", score:{miro:2, matisse:3} }
+    ]
+  },
+  {
+    q: "사물을 ‘있는 그대로’보다 ‘다르게’ 그리려는 편인가요?",
+    a: [
+      { text:"그렇다", score:{picasso:3, miro:2} },
+      { text:"중간",   score:{picasso:2, matisse:1} },
+      { text:"아니다", score:{klee:2, matisse:2} }
+    ]
+  },
+  {
+    q: "색을 고를 때 이유가 ‘느낌’에 가까운가요?",
+    a: [
+      { text:"그렇다", score:{matisse:3, miro:2} },
+      { text:"중간",   score:{matisse:2, klee:1} },
+      { text:"아니다", score:{klee:2, picasso:2} }
+    ]
+  },
+  {
+    q: "같은 주제라도 ‘다른 버전’을 여러 개 만들고 싶어하나요?",
+    a: [
+      { text:"그렇다", score:{picasso:3, klee:2} },
+      { text:"중간",   score:{picasso:2, miro:1} },
+      { text:"아니다", score:{matisse:2, miro:2} }
+    ]
+  },
+  {
+    q: "규칙/방법을 알려주면 더 편안해하나요?",
+    a: [
+      { text:"그렇다", score:{klee:3, picasso:2} },
+      { text:"중간",   score:{klee:2, matisse:1} },
+      { text:"아니다", score:{miro:3, matisse:2} }
+    ]
+  },
+  {
+    q: "그림 속에 기호(표시, 문자, 반복되는 모양)를 자주 넣나요?",
+    a: [
+      { text:"그렇다", score:{klee:3, miro:2} },
+      { text:"중간",   score:{klee:2, picasso:1} },
+      { text:"아니다", score:{matisse:2, picasso:2} }
+    ]
+  },
+  {
+    q: "선(윤곽, 형태)을 먼저 잡아야 안심하는 편인가요?",
+    a: [
+      { text:"그렇다", score:{klee:3, picasso:2} },
+      { text:"중간",   score:{picasso:2, matisse:1} },
+      { text:"아니다", score:{matisse:3, miro:2} }
+    ]
+  },
 ];
 
-// ----------------------
-// 상태값
-// ----------------------
+/* =========================
+   3) 점수/진행 상태
+   ========================= */
 let current = 0;
 let scores = { klee:0, miro:0, picasso:0, matisse:0 };
+let answers = [];
 
-// ----------------------
-// 렌더링
-// ----------------------
+/* =========================
+   4) 화면 렌더
+   ========================= */
 const quizDiv = document.getElementById("quiz");
+const resultDiv = document.getElementById("result");
+const debugBox = document.getElementById("debug");
 
 function renderQuestion() {
-  if (current >= questions.length) {
-    showResult();
-    return;
-  }
+  const total = questions.length;
+  if (current >= total) return showResult();
 
   const q = questions[current];
   quizDiv.innerHTML = `
-    <div class="question">
-      <h3>${q.q}</h3>
-      ${q.a.map((opt,i)=>`
-        <button onclick="answer(${i})">${opt.text}</button>
-      `).join("")}
+    <div class="progress">${current+1} / ${total}</div>
+    <div class="q">${q.q}</div>
+    ${q.a.map((opt,i)=>`<button class="btn" onclick="answer(${i})">${opt.text}</button>`).join("")}
+    <div class="row">
+      <button class="btn ghost" onclick="resetQuiz()">처음으로</button>
+      <button class="btn ghost" onclick="backOne()" ${current===0 ? "disabled" : ""}>이전</button>
     </div>
+    <div class="small" style="margin-top:10px;">※ 부모님 관찰 기준으로 가장 가까운 선택을 고르시면 됩니다.</div>
   `;
+  if (DEBUG) showDebug();
 }
 
-function answer(i) {
-  const chosen = questions[current].a[i].score;
-  for (let key in chosen) {
-    scores[key] += chosen[key];
+function applyScore(delta, dir=1) {
+  for (const k of Object.keys(scores)) {
+    scores[k] += (delta[k] || 0) * dir;
   }
-  current++;
-  renderQuestion();
 }
 
-function showResult() {
-  quizDiv.style.display="none";
-
-  let top = Object.keys(scores).reduce((a,b)=>
-    scores[a] > scores[b] ? a : b
-  );
-
-  const r = artists[top];
-
-  document.getElementById("result").innerHTML = `
-    <h2>${r.name}</h2>
-    <p>${r.desc}</p>
-    <p class="small">${r.rare}</p>
-    <hr>
-    <p class="small">
-      이 성향은 환경에 따라 전혀 다른 방향으로 발전할 수 있습니다.<br>
-      지금의 경험이 중요한 시기입니다.
-    </p>
-  `;
-  document.getElementById("result").style.display="block";
-}
-
-renderQuestion();
-</script>
-
-</body>
-</html>
+function an
