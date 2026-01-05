@@ -41,3 +41,91 @@ h1{ font-size: 18px; margin: 0; letter-spacing: -0.2px; }
 .hidden{ display:none; }
 .tag{ display:inline-block; padding:6px 10px; border:1px solid #2b3342; border-radius:999px; margin-right:8px; opacity:.9; }
 .small{ opacity:.8; font-size: 13px; margin-top: 10px; line-height: 1.5; }
+/* ===== BACKGROUND IMAGE LAYER ===== */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background-image: url("assets/bg.jpg");
+  background-size: cover;       /* 기본: 화면 꽉 채우기 */
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.22;                /* 분위기용, 0.15~0.25 사이 추천 */
+  z-index: -2;
+}
+
+/* 배경 가독성 보호용 오버레이 */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15,17,21,0.85),
+      rgba(15,17,21,0.95)
+    );
+  z-index: -1;
+}
+
+@media (max-width: 480px){
+  body{
+    padding: 14px;
+  }
+
+  .card{
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  h1{
+    font-size: 17px;
+  }
+
+  .question{
+    font-size: 18px;
+  }
+
+  .btn{
+    padding: 16px 14px;
+    font-size: 16px;
+    border-radius: 16px;
+  }
+
+  .result{
+    padding: 14px;
+    border-radius: 16px;
+  }
+}
+/* CTA 영역 */
+.cta-box{
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(40,46,64,0.9),
+    rgba(24,28,40,0.9)
+  );
+  border: 1px solid #3a4560;
+}
+
+/* CTA 버튼 */
+.cta-btn{
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #2e6bff;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+
+.cta-btn:active{
+  transform: translateY(1px);
+  opacity: 0.95;
+}
+
