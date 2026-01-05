@@ -2,74 +2,74 @@
   "questions": [
     {
       "text": "아이는 그림을 그리기 전, 한참을 바라보는 편인가요?",
-      "yes": { "klee":3, "picasso":2, "matisse":0, "miro":0 },
-      "mid": { "klee":1, "matisse":1, "picasso":1, "miro":1 },
-      "no":  { "miro":3, "matisse":2, "klee":0, "picasso":0 }
+      "yes": { "davinci":3, "picasso":2, "gogh":0, "dali":0 },
+      "mid": { "davinci":1, "gogh":1, "picasso":1, "dali":1 },
+      "no":  { "dali":3, "gogh":2, "davinci":0, "picasso":0 }
     },
     {
       "text": "색을 고르기 전에 한 번 더 고민하는 편인가요, 아니면 바로 고르는 편인가요?",
-      "yes": { "miro":3, "matisse":2, "klee":0, "picasso":0 },
-      "mid": { "miro":1, "picasso":2, "klee":0, "matisse":0 },
-      "no":  { "klee":3, "picasso":1, "miro":0, "matisse":0 }
+      "yes": { "dali":3, "gogh":2, "davinci":0, "picasso":0 },
+      "mid": { "dali":1, "picasso":2, "davinci":0, "gogh":0 },
+      "no":  { "davinci":3, "picasso":1, "dali":0, "gogh":0 }
     },
     {
       "text": "그림을 설명해 달라 하면 말보다 보여주려는 편인가요?",
-      "yes": { "miro":3, "matisse":2, "klee":0, "picasso":0 },
-      "mid": { "miro":1, "picasso":1, "matisse":1, "klee":0 },
-      "no":  { "klee":3, "picasso":2, "miro":0, "matisse":0 }
+      "yes": { "dali":3, "gogh":2, "davinci":0, "picasso":0 },
+      "mid": { "dali":1, "picasso":1, "gogh":1, "davinci":0 },
+      "no":  { "davinci":3, "picasso":2, "dali":0, "gogh":0 }
     },
     {
       "text": "한 장을 그릴 때, 자주 지우거나 고쳐 그리나요?",
-      "yes": { "klee":3, "picasso":2, "miro":0, "matisse":0 },
-      "mid": { "klee":1, "picasso":1, "matisse":1, "miro":0 },
-      "no":  { "miro":2, "matisse":3, "klee":0, "picasso":0 }
+      "yes": { "davinci":3, "picasso":2, "dali":0, "gogh":0 },
+      "mid": { "davinci":1, "picasso":1, "gogh":1, "dali":0 },
+      "no":  { "dali":2, "gogh":3, "davinci":0, "picasso":0 }
     },
     {
       "text": "사물을 있는 그대로보다 다르게 표현하려는 편인가요?",
-      "yes": { "picasso":3, "miro":2, "klee":0, "matisse":0 },
-      "mid": { "picasso":2, "matisse":1, "klee":0, "miro":0 },
-      "no":  { "klee":2, "matisse":2, "picasso":0, "miro":0 }
+      "yes": { "picasso":3, "dali":2, "davinci":0, "gogh":0 },
+      "mid": { "picasso":2, "gogh":1, "davinci":0, "dali":0 },
+      "no":  { "davinci":2, "gogh":2, "picasso":0, "dali":0 }
     },
     {
       "text": "색을 고를 때 이유를 물으면 ‘느낌’이라고 말하나요?",
-      "yes": { "matisse":3, "miro":2, "klee":0, "picasso":0 },
-      "mid": { "matisse":2, "klee":1, "miro":0, "picasso":0 },
-      "no":  { "klee":2, "picasso":2, "matisse":0, "miro":0 }
+      "yes": { "gogh":3, "dali":2, "davinci":0, "picasso":0 },
+      "mid": { "gogh":2, "davinci":1, "dali":0, "picasso":0 },
+      "no":  { "davinci":2, "picasso":2, "gogh":0, "dali":0 }
     },
     {
       "text": "같은 주제라도 여러 방식으로 다시 그려보고 싶어하나요?",
-      "yes": { "picasso":3, "klee":2, "matisse":0, "miro":0 },
-      "mid": { "picasso":2, "miro":1, "klee":0, "matisse":0 },
-      "no":  { "matisse":2, "miro":2, "klee":0, "picasso":0 }
+      "yes": { "picasso":3, "davinci":2, "gogh":0, "dali":0 },
+      "mid": { "picasso":2, "dali":1, "davinci":0, "gogh":0 },
+      "no":  { "gogh":2, "dali":2, "davinci":0, "picasso":0 }
     },
     {
       "text": "그리기 전에 방법이나 순서를 알려주면 더 편안해하나요?",
-      "yes": { "klee":3, "picasso":2, "miro":0, "matisse":0 },
-      "mid": { "klee":2, "matisse":1, "miro":0, "picasso":0 },
-      "no":  { "miro":3, "matisse":2, "klee":0, "picasso":0 }
+      "yes": { "davinci":3, "picasso":2, "dali":0, "gogh":0 },
+      "mid": { "davinci":2, "gogh":1, "dali":0, "picasso":0 },
+      "no":  { "dali":3, "gogh":2, "davinci":0, "picasso":0 }
     },
     {
       "text": "그림에 반복되는 모양이나 독특한 조합이 자주 등장하나요?",
-      "yes": { "klee":3, "miro":2, "matisse":0, "picasso":0 },
-      "mid": { "klee":2, "picasso":1, "miro":0, "matisse":0 },
-      "no":  { "matisse":2, "picasso":2, "klee":0, "miro":0 }
+      "yes": { "davinci":3, "dali":2, "gogh":0, "picasso":0 },
+      "mid": { "davinci":2, "picasso":1, "dali":0, "gogh":0 },
+      "no":  { "gogh":2, "picasso":2, "davinci":0, "dali":0 }
     },
     {
       "text": "선이나 형태를 먼저 잡아야 안심하는 편인가요?",
-      "yes": { "klee":3, "picasso":2, "miro":0, "matisse":0 },
-      "mid": { "picasso":2, "matisse":1, "klee":0, "miro":0 },
-      "no":  { "matisse":3, "miro":2, "klee":0, "picasso":0 }
+      "yes": { "davinci":3, "picasso":2, "dali":0, "gogh":0 },
+      "mid": { "picasso":2, "gogh":1, "davinci":0, "dali":0 },
+      "no":  { "gogh":3, "dali":2, "davinci":0, "picasso":0 }
     }
   ],
   "results": {
-    "klee": {
+    "davinci": {
       "title": "레오나르도 다빈치형",
       "desc": "그리기 전에 보고, 비교하고, 정리하려는 경향이 보이는 아이입니다.",
       "rare": "또래 아이들 중에서도 비교적 신중한 편에 속합니다.",
-      "tip": "서두르지 말고 관찰한 것을 말로 풀어낼 시간을 주면 표현이 깊어집니다.",
+      "tip": "관찰한 것을 말로 풀어낼 시간을 주면 표현이 깊어집니다.",
       "image": "assets/davinci.jpg"
     },
-    "miro": {
+    "dali": {
       "title": "달리형",
       "desc": "현실보다 상상과 이미지의 연결에 더 끌리는 아이입니다.",
       "rare": "이 시기에는 비교적 드물게 유지되는 성향입니다.",
@@ -83,7 +83,7 @@
       "tip": "다르게 그려도 괜찮다는 허용이 가장 중요한 자극입니다.",
       "image": "assets/picasso.jpg"
     },
-    "matisse": {
+    "gogh": {
       "title": "고흐형",
       "desc": "정확함보다 느낌과 감정의 세기를 색으로 표현하려는 아이입니다.",
       "rare": "초등 저학년에서 점차 줄어드는 경향이 있습니다.",
