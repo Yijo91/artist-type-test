@@ -54,13 +54,47 @@
     : "";
 
   $r.innerHTML = `
-    <div><span class="pill">결과</span> <b style="font-size:18px;">${top.title}</b> <span style="opacity:.7">(${topVal}점)</span></div>
-    ${img}
-    <p style="margin:10px 0 6px; line-height:1.6;">${top.desc}</p>
-    ${top.rare ? `<p class="small" style="margin:0 0 10px;">${top.rare}</p>` : ""}
-    <p class="small"><b>이 아이에게 잘 맞는 자극</b><br>${top.tip}</p>
-    <button class="btn" onclick="location.reload()" style="margin-top:14px;">다시 하기</button>
-  `;
+  <div>
+    <span class="pill">결과</span>
+    <b style="font-size:18px;">${top.title}</b>
+    <span style="opacity:.7">(${topVal}점)</span>
+  </div>
+
+  ${img}
+
+  <p style="margin:10px 0 6px; line-height:1.6;">
+    ${top.desc}
+  </p>
+
+  ${top.rare ? `
+    <p class="small" style="margin:0 0 12px; line-height:1.6;">
+      ${top.rare}
+    </p>
+  ` : ""}
+
+  ${top.job ? `
+    <p class="small" style="margin:12px 0;">
+      <b>${top.job}</b>
+    </p>
+  ` : ""}
+
+  ${top.cta ? `
+    <div class="cta-box" style="margin:16px 0; padding:14px; background:#f3f0ea; border-radius:10px;">
+      <p style="margin:0 0 8px; line-height:1.6;">
+        ${top.cta}
+      </p>
+      <a href="${top.link}" target="_blank"
+         style="display:inline-block; margin-top:6px; font-weight:700; text-decoration:underline;">
+        플래뮤 망원 네이버 플레이스로 바로가기
+      </a>
+    </div>
+  ` : ""}
+
+  <button class="btn" onclick="location.reload()" style="margin-top:14px;">
+    다시 하기
+  </button>
+`;
+
   }
 
   document.addEventListener("click", (e)=>{
