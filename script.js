@@ -38,40 +38,25 @@
     Object.keys(score).forEach(k => score[k] += (add[k] || 0));
   }
 
- function finish() {
+function finish() {
+  // 질문 카드 숨기기 (여기서만!)
+  $quiz.style.display = "none";
+
   const sorted = Object.entries(score).sort((a,b)=>b[1]-a[1]);
   const [topKey, topVal] = sorted[0];
 
   const top = results[topKey];
 
-  // 1️⃣ 질문 카드 완전히 제거
-  $quiz.style.display = "none";
+  $r.classList.remove("hidden");
 
-  // 2️⃣ 결과 카드 준비
-  $r.className = "card";   // 🔥 hidden 제거 + card 부여를 한 번에
-  
   const img = top.image
     ? `<img src="${encodeURI(top.image)}" class="result-img" alt="${top.title}">`
     : "";
 
-  // 3️⃣ 내용 채우기
   $r.innerHTML = `
-    <div><span class="pill">결과</span> <b style="font-size:18px;">${top.title}</b></div>
+    <div><span class="pill">결과</span> <b>${top.title}</b></div>
     ${img}
     <p>${top.desc}</p>
-    ${top.rare ? `<p class="small">${top.rare}</p>` : ""}
-    <p class="small"><b>추천 분야</b><br>${top.job}</p>
-
-    <div class="cta-box">
-      <p class="small">${top.cta}</p>
-      <a class="cta-btn" href="${top.link}" target="_blank" rel="noopener">
-        플래뮤 망원 바로가기
-      </a>
-    </div>
-
-    <button class="btn" onclick="location.reload()" style="margin-top:14px;">
-      다시 하기
-    </button>
   `;
 }
 
