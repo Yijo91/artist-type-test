@@ -28,12 +28,14 @@ body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background-image: url("assets/bg-wall.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: saturate(0.95) contrast(0.95) brightness(0.95);
-  opacity: 0.2;
+  background-image: url("./assets/bg-wall.jpg");
+
+  /* 👇 핵심 */
+  background-size: 420px auto;   /* 크기 조절 포인트 */
+  background-repeat: repeat;
+  background-position: top left;
+
+  opacity: 0.35;
   z-index: -2;
 }
 
