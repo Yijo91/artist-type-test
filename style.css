@@ -65,12 +65,7 @@ body::after{
   content:"";
   position: fixed;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(15,17,21,0.85),
-      rgba(15,17,21,0.95)
-    );
+  background: linear-gradient(180deg, rgba(15,17,21,0.85), rgba(15,17,21,0.95));
   z-index: -1;
 }
 
