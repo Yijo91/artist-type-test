@@ -45,7 +45,7 @@
   const top = results[topKey];
 
   // 1️⃣ 질문 카드 완전히 제거
-  $quiz.classList.add("hidden");
+  $quiz.style.display = "none";
 
   // 2️⃣ 결과 카드 준비
   $r.className = "card";   // 🔥 hidden 제거 + card 부여를 한 번에
