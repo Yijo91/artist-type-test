@@ -38,63 +38,43 @@
     Object.keys(score).forEach(k => score[k] += (add[k] || 0));
   }
 
-  function finish() {
-    $r.classList.add("card");
-    const sorted = Object.entries(score).sort((a,b)=>b[1]-a[1]);
-    const [topKey, topVal] = sorted[0];
-    const [subKey, subVal] = sorted[1];
+ function finish() {
+  const sorted = Object.entries(score).sort((a,b)=>b[1]-a[1]);
+  const [topKey, topVal] = sorted[0];
 
-    const top = results[topKey];
-    const sub = results[subKey];
+  const top = results[topKey];
 
-    $quiz.classList.add("hidden");
-    $r.classList.remove("hidden");
+  // 1️⃣ 질문 카드 완전히 제거
+  $quiz.classList.add("hidden");
 
+  // 2️⃣ 결과 카드 준비
+  $r.className = "card";   // 🔥 hidden 제거 + card 부여를 한 번에
+  
   const img = top.image
     ? `<img src="${encodeURI(top.image)}" class="result-img" alt="${top.title}">`
     : "";
 
+  // 3️⃣ 내용 채우기
   $r.innerHTML = `
-  <div>
-    <span class="pill">결과</span>
-    <b style="font-size:18px;">${top.title}</b>
-    <span style="opacity:.7">(${topVal}점)</span>
-  </div>
+    <div><span class="pill">결과</span> <b style="font-size:18px;">${top.title}</b></div>
+    ${img}
+    <p>${top.desc}</p>
+    ${top.rare ? `<p class="small">${top.rare}</p>` : ""}
+    <p class="small"><b>추천 분야</b><br>${top.job}</p>
 
-  ${img}
-
-  <p style="margin:10px 0 6px; line-height:1.6;">
-    ${top.desc}
-  </p>
-
-  ${top.rare ? `
-    <p class="small" style="margin:0 0 12px; line-height:1.6;">
-      ${top.rare}
-    </p>
-  ` : ""}
-
-  ${top.job ? `
-    <p class="small" style="margin:12px 0;">
-      <b>${top.job}</b>
-    </p>
-  ` : ""}
-
-  ${top.cta ? `
-    <div class="cta-box" style="margin:16px 0; padding:14px; background:#f3f0ea; border-radius:10px;">
-      <p style="margin:0 0 8px; line-height:1.6;">
-        ${top.cta}
-      </p>
-      <a href="${top.link}" target="_blank"
-         style="display:inline-block; margin-top:6px; font-weight:700; text-decoration:underline;">
-        플래뮤 망원 네이버 플레이스로 바로가기
+    <div class="cta-box">
+      <p class="small">${top.cta}</p>
+      <a class="cta-btn" href="${top.link}" target="_blank" rel="noopener">
+        플래뮤 망원 바로가기
       </a>
     </div>
-  ` : ""}
 
-  <button class="btn" onclick="location.reload()" style="margin-top:14px;">
-    다시 하기
-  </button>
-`;
+    <button class="btn" onclick="location.reload()" style="margin-top:14px;">
+      다시 하기
+    </button>
+  `;
+}
+
 
   }
 
