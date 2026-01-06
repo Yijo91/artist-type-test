@@ -145,4 +145,7 @@ body::before{
 
   z-index: -1;
 }
+.card{
+  backdrop-filter: blur(2px);
+}
 
