@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>우리 아이의 예술 성향 검사</title>
-<link rel="stylesheet" href="./style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>우리 아이의 예술 성향 검사</title>
+  <link rel="stylesheet" href="./style.css?v=3" />
 </head>
 
 <body>
-<div class="wrap">
-  <h1>아이의 그림 성향을 알아보세요</h1>
-  <div class="small">10문항 · 부모 관찰형 · 결과는 예술가 유형으로 제시됩니다.</div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>아이의 그림 성향을 알아보세요</h1>
+      <p class="small">10문항 · 부모 관찰형 · 결과는 예술가 유형으로 제시됩니다.</p>
+    </header>
 
-  <div id="quiz" class="card">
-    <div id="progress" class="progress"></div>
-    <div id="question" class="q"></div>
+    <div id="quiz" class="card">
+      <div class="top">
+        <div id="progress" class="progress"></div>
+      </div>
+      <div id="question" class="question"></div>
 
-    <button class="btn" data-choice="yes">그렇다</button>
-    <button class="btn" data-choice="mid">중간</button>
-    <button class="btn" data-choice="no">아니다</button>
+      <div class="choices">
+        <button class="btn" data-choice="yes">그렇다</button>
+        <button class="btn" data-choice="mid">중간</button>
+        <button class="btn" data-choice="no">아니다</button>
+      </div>
+    </div>
+
+    <div id="result" class="card result hidden"></div>
   </div>
 
-  <div id="result" class="card hidden"></div>
-</div>
-
-<script src="./script.js" defer></script>
+  <script src="./script.js" defer></script>
 </body>
 </html>
