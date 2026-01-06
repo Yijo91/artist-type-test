@@ -163,13 +163,89 @@ h1{
   background: rgba(17,21,32,.45);
 }
 
+/* CTA: 카드 안의 카드 */
 .cta-box{
   margin-top: 16px;
   padding: 16px;
-  border-radius: 14px;
-  background: #111520;        /* 카드보다 살짝 다른 어두움 */
-  border: 1px solid #2b3342;
+  border-radius: 16px;
+
+  /* 메인 카드(크림)보다 한 톤 더 진하게 */
+  background: rgba(240, 220, 185, 0.55);
+  border: 1px solid rgba(150, 120, 80, 0.25);
+
+  /* 미세한 질감 */
+  box-shadow: 0 10px 20px rgba(120, 90, 50, 0.10);
 }
+
+/* CTA 헤드라인 */
+.cta-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  color: #3b2a1f;
+}
+
+/* “광고” 티 안 나게 브랜드 배지 처리 */
+.cta-badge{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  background: rgba(255, 248, 232, 0.8);
+  border: 1px solid rgba(150, 120, 80, 0.22);
+  color: #6b5647;
+}
+
+/* CTA 본문 */
+.cta-text{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #4a3427;
+}
+
+/* CTA 버튼: 따뜻한 브라운 골드 */
+.cta-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  background: linear-gradient(180deg, #b07a45, #8e5d33);
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+
+  border: 1px solid rgba(70, 45, 25, 0.25);
+  box-shadow: 0 10px 18px rgba(120, 70, 30, 0.22);
+}
+
+.cta-btn:hover{ filter: brightness(1.03); }
+.cta-btn:active{ transform: translateY(1px); }
+
+/* 버튼 아래 보조 링크(원하면) */
+.cta-sub{
+  margin-top: 10px;
+  font-size: 12px;
+  color: #6b5647;
+  opacity: 0.9;
+}
+.cta-sub a{
+  color: #6b5647;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 
 /* 모바일 최적화 */
 @media (max-width: 480px){
