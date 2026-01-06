@@ -139,8 +139,9 @@ h1{
   gap: 10px;
 }
 
-.hidden{ display:none; }
-
+.hidden {
+  display: none !important;
+}
 /* 결과 이미지: “너무 크게” 들어가는 문제 해결 */
 .result-img{
   width: 100%;
