@@ -58,7 +58,7 @@ function finish() {
     ${img}
     <p>${top.desc}</p>
   `;
-}
+  }
 
 
   
