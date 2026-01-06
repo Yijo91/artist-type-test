@@ -22,7 +22,6 @@
   --radius: 18px;
 }
 body{
-body{
   margin: 0;
   font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   color: var(--ink);
@@ -33,7 +32,7 @@ body{
      베이지 톤을 깔고 싶으면 var(--page)로 두시면 됩니다. */
   background: transparent; /* 또는 background: var(--page); */
 }
-}
+
 /* 배경 레이어는 html에 깔면 제일 안정적입니다 */
 body::before{
   content:"";
