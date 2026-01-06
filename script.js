@@ -39,6 +39,7 @@
   }
 
   function finish() {
+    $r.classList.add("card");
     const sorted = Object.entries(score).sort((a,b)=>b[1]-a[1]);
     const [topKey, topVal] = sorted[0];
     const [subKey, subVal] = sorted[1];
