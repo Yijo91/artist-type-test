@@ -82,6 +82,7 @@ h1{
   font-size: 13px;
 }
 /* 카드 */
+.card{
   background: rgba(255, 248, 232, 0.88); /* 크림 옐로 + 반투명 */
   border: 1px solid rgba(150, 120, 80, 0.22);
   border-radius: 18px;
