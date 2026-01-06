@@ -7,7 +7,7 @@
       "no": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "색을 고르기 전에 한 번 더 고민하는 편인가요, 아니면 바로 고르는 편인가요?",
+      "text": "색을 고를 때 즉흥적으로 고르지 않고 길게 고민하는 편인가요?",
       "yes": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 },
       "mid": { "dali": 1, "picasso": 2, "davinci": 0, "gogh": 0 },
       "no": { "davinci": 3, "picasso": 1, "dali": 0, "gogh": 0 }
@@ -19,13 +19,13 @@
       "no": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 }
     },
     {
-      "text": "한 장을 그릴 때, 자주 지우거나 고쳐 그리나요?",
+      "text": "그림을 자주 지우거나 고쳐 그리나요?",
       "yes": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 },
       "mid": { "davinci": 1, "picasso": 1, "gogh": 1, "dali": 0 },
       "no": { "dali": 2, "gogh": 3, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "사물을 있는 그대로보다 다르게 표현하려는 편인가요?",
+      "text": "사물을 있는 그대로보다 상상해서 다르게 표현하려는 편인가요?",
       "yes": { "picasso": 3, "dali": 2, "davinci": 0, "gogh": 0 },
       "mid": { "picasso": 2, "gogh": 1, "davinci": 0, "dali": 0 },
       "no": { "davinci": 2, "gogh": 2, "picasso": 0, "dali": 0 }
@@ -49,7 +49,7 @@
       "no": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "그림에 반복되는 모양이나 독특한 조합이 자주 등장하나요?",
+      "text": "그림에 반복되는 모양이 자주 등장하나요?",
       "yes": { "davinci": 3, "dali": 2, "gogh": 0, "picasso": 0 },
       "mid": { "davinci": 2, "picasso": 1, "dali": 0, "gogh": 0 },
       "no": { "gogh": 2, "picasso": 2, "davinci": 0, "dali": 0 }
