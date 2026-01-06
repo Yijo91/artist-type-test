@@ -33,7 +33,7 @@ body::before{
   background-position: center;
   background-repeat: no-repeat;
   filter: saturate(0.95) contrast(0.95) brightness(0.95);
-  opacity: 0.45;
+  opacity: 0.2;
   z-index: -2;
 }
 
@@ -169,6 +169,14 @@ h1{
     padding: 16px 14px;
     border-radius: 16px;
   }
+  
+.cta-box{
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #111520;        /* 카드보다 살짝 다른 어두움 */
+  border: 1px solid #2b3342;
+}
 
   .result-img{
     max-height: 240px;
