@@ -13,7 +13,16 @@
 
   --radius: 18px;
 }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  color: #e9edf1;
+  min-height: 100vh;
+  padding: 18px;
 
+  /* 중요: body 자체가 불투명 배경으로 덮지 않게 */
+  background: transparent;
+}
 /* 배경 레이어는 html에 깔면 제일 안정적입니다 */
 body::before{
   content:"";
