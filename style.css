@@ -128,4 +128,21 @@ body::after{
   transform: translateY(1px);
   opacity: 0.95;
 }
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("assets/bg-wall.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* 유럽 미장 느낌 살리는 핵심 */
+  filter: saturate(0.9) contrast(0.95) brightness(0.9);
+
+  /* 카드 가독성 확보용 */
+  opacity: 0.25;
+
+  z-index: -1;
+}
 
