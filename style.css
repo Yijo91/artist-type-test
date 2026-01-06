@@ -15,31 +15,29 @@
 }
 
 /* 배경 레이어는 html에 깔면 제일 안정적입니다 */
-html::before{
+body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background: url("./assets/bg-wall.jpg") center/cover no-repeat;
-  opacity: 0.26;
-  filter: saturate(.9) contrast(.95) brightness(.9);
+  background-image: url("assets/bg-wall.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(0.95) contrast(0.95) brightness(0.95);
+  opacity: 0.45;
   z-index: -2;
 }
 
-html::after{
+body::after{
   content:"";
   position: fixed;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15,17,21,.78), rgba(15,17,21,.92));
+  background: linear-gradient(
+    180deg,
+    rgba(15,17,21,0.30),
+    rgba(15,17,21,0.65)
+  );
   z-index: -1;
-}
-
-body{
-  margin: 0;
-  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  background: transparent; /* <-- 이게 핵심 */
-  color: var(--text);
-  min-height: 100vh;
-  padding: 18px;
 }
 
 /* 전체 레이아웃 */
