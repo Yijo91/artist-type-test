@@ -61,7 +61,7 @@ function finish() {
 }
 
 
-  }
+  
 
   document.addEventListener("click", (e)=>{
     const btn = e.target.closest("button[data-choice]");
