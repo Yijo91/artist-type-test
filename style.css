@@ -43,15 +43,21 @@ h1{ font-size: 18px; margin: 0; letter-spacing: -0.2px; }
 .small{ opacity:.8; font-size: 13px; margin-top: 10px; line-height: 1.5; }
 /* ===== BACKGROUND IMAGE LAYER ===== */
 body::before{
-  content:"";
+  content: "";
   position: fixed;
   inset: 0;
-  background-image: url("assets/bg.jpg");
-  background-size: cover;       /* 기본: 화면 꽉 채우기 */
+  background-image: url("assets/bg-wall.jpg");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.22;                /* 분위기용, 0.15~0.25 사이 추천 */
-  z-index: -2;
+
+  /* 유럽 미장 느낌 살리는 핵심 */
+  filter: saturate(0.9) contrast(0.95) brightness(0.9);
+
+  /* 카드 가독성 확보용 */
+  opacity: 0.25;
+
+  z-index: -1;
 }
 
 /* 배경 가독성 보호용 오버레이 */
@@ -128,23 +134,7 @@ body::after{
   transform: translateY(1px);
   opacity: 0.95;
 }
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("assets/bg-wall.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
-  /* 유럽 미장 느낌 살리는 핵심 */
-  filter: saturate(0.9) contrast(0.95) brightness(0.9);
-
-  /* 카드 가독성 확보용 */
-  opacity: 0.25;
-
-  z-index: -1;
-}
 .card{
   backdrop-filter: blur(2px);
 }
