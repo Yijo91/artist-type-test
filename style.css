@@ -36,7 +36,7 @@ html::after{
 body{
   margin: 0;
   font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  background: var(--bg);
+  background: transparent; /* <-- 이게 핵심 */
   color: var(--text);
   min-height: 100vh;
   padding: 18px;
