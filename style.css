@@ -83,14 +83,17 @@ h1{
   font-size: 13px;
 }
 /* 카드 */
-.card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: rgba(255, 248, 232, 0.88); /* 크림 옐로 + 반투명 */
+  border: 1px solid rgba(150, 120, 80, 0.22);
+  border-radius: 18px;
   padding: 18px;
-  box-shadow: 0 10px 26px rgba(59,42,31,.10);
-  backdrop-filter: blur(3px);
-}
+
+  /* 유리판 느낌 */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  box-shadow:
+    0 8px 24px rgba(120, 90, 50, 0.18);
 
 .top{
   display:flex;
