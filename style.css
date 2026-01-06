@@ -1,27 +1,38 @@
 *{ box-sizing: border-box; }
 
 :root{
-  --bg: #0f1115;
-  --text: #e9edf1;
-  --muted: rgba(233,237,241,.72);
+  /* page */
+  --page: #f6f1e7;              /* 전체 바탕(따뜻한 베이지) */
+  --ink:  #3b2a1f;              /* 기본 글자(짙은 갈색) */
+  --muted:#6b5647;              /* 보조 글자(연갈색) */
 
-  --card: rgba(23,26,33,.88);
-  --border: #242a35;
+  /* card */
+  --card: rgba(255, 252, 246, 0.92); /* 카드 배경(크림) */
+  --border: rgba(86, 62, 44, 0.18);  /* 카드 테두리 */
 
-  --btn: #1c2130;
-  --btnBorder: #2b3342;
+  /* button */
+  --btn: #efe2cf;               /* 버튼 배경(샌드 베이지) */
+  --btnBorder: rgba(86,62,44,0.22);
+  --btnText: #3b2a1f;
+
+  /* accents */
+  --accent: #9a6b3f;            /* 포인트(브라운 골드) */
+  --accent2:#d9b98c;            /* 보조 포인트 */
 
   --radius: 18px;
 }
 body{
+body{
   margin: 0;
   font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  color: #e9edf1;
+  color: var(--ink);
   min-height: 100vh;
   padding: 18px;
 
-  /* 중요: body 자체가 불투명 배경으로 덮지 않게 */
-  background: transparent;
+  /* 배경을 이미지 위로 투명하게 쓰는 구조면 transparent 유지,
+     베이지 톤을 깔고 싶으면 var(--page)로 두시면 됩니다. */
+  background: transparent; /* 또는 background: var(--page); */
+}
 }
 /* 배경 레이어는 html에 깔면 제일 안정적입니다 */
 body::before{
@@ -57,6 +68,7 @@ h1{
   margin: 0 0 6px;
   font-size: 18px;
   letter-spacing: -0.2px;
+  color: var(--ink);
 }
 
 .small{
@@ -66,14 +78,18 @@ h1{
   line-height: 1.5;
 }
 
+.progress{
+  color: var(--muted);
+  font-size: 13px;
+}
 /* 카드 */
 .card{
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  box-shadow: 0 10px 26px rgba(0,0,0,.25);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 26px rgba(59,42,31,.10);
+  backdrop-filter: blur(3px);
 }
 
 .top{
@@ -105,13 +121,13 @@ h1{
   border-radius: 14px;
   border: 1px solid var(--btnBorder);
   background: var(--btn);
-  color: var(--text);
+  color: var(--btnText);
   font-size: 16px;
   cursor: pointer;
   transition: transform .05s ease, filter .12s ease;
 }
 
-.btn:hover{ filter: brightness(1.06); }
+.btn:hover{ filter: brightness(0.98); }
 .btn:active{ transform: translateY(1px); }
 
 /* 결과 카드 내부 정리 */
@@ -145,6 +161,14 @@ h1{
   background: rgba(17,21,32,.45);
 }
 
+.cta-box{
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #111520;        /* 카드보다 살짝 다른 어두움 */
+  border: 1px solid #2b3342;
+}
+
 /* 모바일 최적화 */
 @media (max-width: 480px){
   body{ padding: 14px; }
@@ -162,13 +186,6 @@ h1{
     border-radius: 16px;
   }
   
-.cta-box{
-  margin-top: 16px;
-  padding: 16px;
-  border-radius: 14px;
-  background: #111520;        /* 카드보다 살짝 다른 어두움 */
-  border: 1px solid #2b3342;
-}
 
   .result-img{
     max-height: 240px;
