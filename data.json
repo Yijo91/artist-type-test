@@ -1,61 +1,61 @@
 {
   "questions": [
     {
-      "text": "아이는 그림을 그리기 전, 한참을 바라보는 편인가요?",
+      "text": "장난감을 조립하거나 가지고 놀 때, 설명서대로 하기보다 일단 부딪혀보거나 다른 방법으로 가지고 노나요?",
       "yes": { "davinci": 3, "picasso": 2, "gogh": 0, "dali": 0 },
       "mid": { "davinci": 1, "gogh": 1, "picasso": 1, "dali": 1 },
       "no": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "색을 고를 때 즉흥적으로 고르지 않고 길게 고민하는 편인가요?",
+      "text": "길을 가다가 돌멩이나 구름을 보고 \"엄마, 저거 공룡 같아!\"라며 생각지 못한 이야기를 자주 하나요?",
       "yes": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 },
       "mid": { "dali": 1, "picasso": 2, "davinci": 0, "gogh": 0 },
       "no": { "davinci": 3, "picasso": 1, "dali": 0, "gogh": 0 }
     },
     {
-      "text": "그림을 설명해 달라 하면 말보다 보여주려는 편인가요?",
+      "text": "혼자 놀 때도 인형이나 로봇에게 말을 걸며 계속 중얼중얼 이야기를 만드나요?",
       "yes": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 },
       "mid": { "dali": 1, "picasso": 1, "gogh": 1, "davinci": 0 },
       "no": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 }
     },
     {
-      "text": "그림을 자주 지우거나 고쳐 그리나요?",
+      "text": "무언가를 만들다가 조금이라도 삐뚤어지거나 마음에 안 들면, 짜증을 내거나 처음부터 다시 하려고 하나요?",
       "yes": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 },
       "mid": { "davinci": 1, "picasso": 1, "gogh": 1, "dali": 0 },
       "no": { "dali": 2, "gogh": 3, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "사물을 있는 그대로보다 상상해서 다르게 표현하려는 편인가요?",
+      "text": "가끔 아이가 하는 말이 너무 엉뚱하거나 어른이 생각지 못한 표현이라서 깜짝 놀란 적이 있나요?",
       "yes": { "picasso": 3, "dali": 2, "davinci": 0, "gogh": 0 },
       "mid": { "picasso": 2, "gogh": 1, "davinci": 0, "dali": 0 },
       "no": { "davinci": 2, "gogh": 2, "picasso": 0, "dali": 0 }
     },
     {
-      "text": "색을 고를 때 이유를 물으면 느낌이라고 말하나요?",
+      "text": "물건을 고를 때 기능이나 크기보다 \"그냥 이게 좋아\"라며 색깔이나 느낌을 제일 중요하게 여기나요?",
       "yes": { "gogh": 3, "dali": 2, "davinci": 0, "picasso": 0 },
       "mid": { "gogh": 2, "davinci": 1, "dali": 0, "picasso": 0 },
       "no": { "davinci": 2, "picasso": 2, "gogh": 0, "dali": 0 }
     },
     {
-      "text": "같은 주제라도 여러 방식으로 다시 그려보고 싶어하나요?",
+      "text": "알려준 그대로 하기보다는, \"이렇게 하면 어때?\"라며 자기 마음대로 바꾸거나 새롭게 시도해보는 걸 좋아하나요?",
       "yes": { "picasso": 3, "davinci": 2, "gogh": 0, "dali": 0 },
       "mid": { "picasso": 2, "dali": 1, "davinci": 0, "gogh": 0 },
       "no": { "gogh": 2, "dali": 2, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "그리기 전에 방법이나 순서를 알려주면 더 편안해하나요?",
+      "text": "새로운 활동을 하기 전에 다른 아이들을 관찰하거나 파악하려고 시간을 들이는 편인가요?",
       "yes": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 },
       "mid": { "davinci": 2, "gogh": 1, "dali": 0, "picasso": 0 },
       "no": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "그림에 반복되는 모양이 자주 등장하나요?",
+      "text": "한 가지 주제(공룡, 자동차, 특정 캐릭터 등)에 한번 꽂히면 계속 파고드나요?"",
       "yes": { "davinci": 3, "dali": 2, "gogh": 0, "picasso": 0 },
       "mid": { "davinci": 2, "picasso": 1, "dali": 0, "gogh": 0 },
       "no": { "gogh": 2, "picasso": 2, "davinci": 0, "dali": 0 }
     },
     {
-      "text": "선이나 형태를 먼저 잡아야 안심하는 편인가요?",
+      "text": "블록이나 장난감을 가지고 놀 때, 크기 순서대로 세우거나 자기만의 규칙대로 줄 세우는 것을 좋아하나요?"",
       "yes": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 },
       "mid": { "picasso": 2, "gogh": 1, "davinci": 0, "dali": 0 },
       "no": { "gogh": 3, "dali": 2, "davinci": 0, "picasso": 0 }
