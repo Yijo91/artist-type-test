@@ -49,13 +49,13 @@
       "no": { "dali": 3, "gogh": 2, "davinci": 0, "picasso": 0 }
     },
     {
-      "text": "한 가지 주제(공룡, 자동차, 특정 캐릭터 등)에 한번 꽂히면 계속 파고드나요?"",
+      "text": "한 가지 주제(공룡, 자동차, 특정 캐릭터 등)에 한번 꽂히면 계속 파고드나요?",
       "yes": { "davinci": 3, "dali": 2, "gogh": 0, "picasso": 0 },
       "mid": { "davinci": 2, "picasso": 1, "dali": 0, "gogh": 0 },
       "no": { "gogh": 2, "picasso": 2, "davinci": 0, "dali": 0 }
     },
     {
-      "text": "블록이나 장난감을 가지고 놀 때, 크기 순서대로 세우거나 자기만의 규칙대로 줄 세우는 것을 좋아하나요?"",
+      "text": "블록이나 장난감을 가지고 놀 때, 크기 순서대로 세우거나 자기만의 규칙대로 줄 세우는 것을 좋아하나요?",
       "yes": { "davinci": 3, "picasso": 2, "dali": 0, "gogh": 0 },
       "mid": { "picasso": 2, "gogh": 1, "davinci": 0, "dali": 0 },
       "no": { "gogh": 3, "dali": 2, "davinci": 0, "picasso": 0 }
